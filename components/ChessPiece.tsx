@@ -20,10 +20,11 @@ const ChessPiece: React.FC<ChessPieceProps> = ({
   color = 'black',
   size = 'md'
 }) => {
+  // Mobile responsive sizes
   const sizeClasses = {
-    sm: 'w-12 h-12 text-2xl',
-    md: 'w-20 h-20 text-4xl',
-    lg: 'w-24 h-24 text-5xl'
+    sm: 'w-10 h-10 sm:w-12 sm:h-12 text-xl sm:text-2xl',
+    md: 'w-16 h-16 sm:w-20 sm:h-20 text-3xl sm:text-4xl',
+    lg: 'w-20 h-20 sm:w-24 sm:h-24 text-4xl sm:text-5xl'
   };
 
   const borderColor = color === 'red' ? 'border-red-800' : 'border-neutral-800';
@@ -36,7 +37,7 @@ const ChessPiece: React.FC<ChessPieceProps> = ({
     bgColor = 'bg-amber-300 scale-105 shadow-md animate-pulse';
   }
 
-  if (isSolved) return <div className={`${sizeClasses[size]}`} />;
+  if (isSolved) return <div className={`${sizeClasses[size]} m-1 sm:m-2`} />;
 
   return (
     <button
@@ -52,12 +53,13 @@ const ChessPiece: React.FC<ChessPieceProps> = ({
         border-2
         flex items-center justify-center 
         transition-all duration-300
-        active:scale-95
-        m-2
+        active:scale-90
+        m-1 sm:m-2
+        touch-manipulation
       `}
     >
       <div className={`absolute inset-1 rounded-full border border-opacity-30 ${borderColor}`} />
-      <span className="relative z-10 font-bold">{content}</span>
+      <span className="relative z-10 font-bold select-none">{content}</span>
     </button>
   );
 };
